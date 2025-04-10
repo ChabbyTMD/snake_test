@@ -1,6 +1,6 @@
 # 🐍 Snakemake Tutorial
 
-This is a very brief introduction to get you a starting point building your own Snakemake pipelines. The Snakemake documentation is very thorough and detailed, feel free to check it out [here](https://snakemake-wrappers.readthedocs.io/en/stable/).
+This is a very brief introduction to get you a starting point building your own Snakemake pipelines. The Snakemake documentation is very thorough and detailed, feel free to check it out [here](https://snakemake.readthedocs.io/en/stable/).
 
 ## ⚙️ Installation
 
