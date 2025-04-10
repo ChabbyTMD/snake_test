@@ -1,0 +1,3 @@
+# Here we specify whether or not we execute the filter rule.
+# Depending on the execution flow of your pipeline more options can be added.
+filter: True

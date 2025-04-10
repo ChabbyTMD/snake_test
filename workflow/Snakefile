@@ -1,0 +1,14 @@
+# Use the directive below to specify the relative path to your pipeline config file
+configfile: "config/config.yaml"
+
+# Here we can include other snakefiles that define rules that generate our desired outputs
+include:"rules/common.smk"
+include: "rules/hello.smk"
+
+
+rule all:
+    """
+    Main workflow, all outputs are handled by the pipeline_output function in common.smk"""
+    input:
+        pipeline_output
+
