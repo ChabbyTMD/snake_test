@@ -17,6 +17,8 @@ RUN python3 -m pip install --upgrade pip
 RUN pip install jupyterlab
 RUN pip install ipykernel
 
+COPY ./workflow /opt/snake-test/workflow
+COPY ./config /opt/snake-test/config
 
 RUN useradd -s /bin/bash -u 1000 -g 100 -m jovyan && echo "jovyan:users" | chpasswd && adduser jovyan sudo
 
