@@ -4,29 +4,22 @@ FROM nvcr.io/nvidia/clara/clara-parabricks:4.5.1-1
 
 # Ensure we have basic tools and a minimal init (tini)
 USER root
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    ca-certificates curl git tini python3-pip \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y
+RUN apt-get -y install pkg-config
+RUN apt-get install libhdf5-dev -y
+RUN apt-get -y install sudo
 
-# Upgrade pip and install Python tools via pip
-RUN python3 -m pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir jupyterlab ipykernel
+# Install Python 3 pip
+RUN apt-get install python3-pip -y
+RUN apt install -y git
 
-# Create and switch to a non-root user suitable for shared filesystems
-# ARG USERNAME=tideuser
-# ARG UID=1000
-# ARG GID=1000
-# RUN groupadd -g ${GID} ${USERNAME} \
-#     && useradd -m -u ${UID} -g ${GID} -s /bin/bash ${USERNAME} \
-#     && mkdir -p /workspace \
-#     && chown -R ${USERNAME}:${USERNAME} /workspace
+RUN python3 -m pip install --upgrade pip
+RUN pip install jupyterlab
+RUN pip install ipykernel
 
-# RUN pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --global-option="--cpp_ext" --global-option="--cuda_ext" ./
-# RUN python3 setup.py install --cuda_ext
+
+RUN useradd -s /bin/bash -u 1000 -g 100 -m jovyan && echo "jovyan:users" | chpasswd && adduser jovyan sudo
 
 WORKDIR /home/jovyan
 USER jovyan
 
-# Keep tini as PID 1 for signal handling and child reaping
-ENTRYPOINT ["/usr/bin/tini", "-g", "--"]
-CMD ["bash"]
