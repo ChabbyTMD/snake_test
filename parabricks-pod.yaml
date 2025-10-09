@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: parabricks-pod
+spec:
+  containers:
+  - name: hello-parabricks
+    image: docker.io/chabbytmd1/snake-test:v1.2.3
+    resources:
+      limits:
+        memory: 32Gi
+        cpu: "5"
+        # Change the number of GPU required (up to 4)
+        nvidia.com/gpu: "1"
+      requests:
+        memory: 32Gi
+        cpu: "5"
+        # Change the number of GPU required (up to 4)
+        nvidia.com/gpu: "1"
+    command: ["sh", "-c", "sleep infinity"]
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+            - matchExpressions:
+              - key: nautilus.io/csu-tide
+                operator: Exists
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-L40
+  tolerations:
+    - key: nautilus.io/reservation
+      operator: Equal
+      value: csu-tide
+      effect: NoSchedule
