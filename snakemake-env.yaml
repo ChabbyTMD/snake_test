@@ -141,4 +141,6 @@ dependencies:
   - yte=1.8.1=pyha770c72_0
   - zstandard=0.25.0=py311haee01d2_0
   - zstd=1.5.7=hb8e6e7a_2
-prefix: /home/jovyan/snakemake
+  - pip:
+    - ipykernel
+    - jupyterlab
