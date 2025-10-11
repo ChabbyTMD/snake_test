@@ -49,4 +49,4 @@ RUN ["conda","clean","--all","--yes"]
 
 # --- Run everything inside the env; we installed bash, so use it in CMD ---
 # ENTRYPOINT ["micromamba","run","-n","snakemake"]
-CMD ["bash","-lc","snakemake --version && sleep infinity"]
+CMD ["conda","run","-n","snakemake","bash","-lc","snakemake --version && sleep infinity"]
