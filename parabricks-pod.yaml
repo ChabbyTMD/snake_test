@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: parabricks-snakemake
-    image: docker.io/chabbytmd1/snake-test:v1.2.5.1
+    image: docker.io/chabbytmd1/snake-test:v1.2.6
     resources:
       limits:
         memory: 32Gi
