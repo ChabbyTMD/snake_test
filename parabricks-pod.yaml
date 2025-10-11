@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: parabricks-pod
+  name: parabricks-snakemake
 spec:
   containers:
-  - name: hello-parabricks
-    image: docker.io/chabbytmd1/snake-test:v1.2.3
+  - name: parabricks-snakemake
+    image: docker.io/chabbytmd1/snake-test:v1.2.6
     resources:
       limits:
         memory: 32Gi

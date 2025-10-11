@@ -106,7 +106,6 @@ dependencies:
   - shellingham=1.5.4=pyhd8ed1ab_1
   - six=1.17.0=pyhe01879c_1
   - slack-sdk=3.36.0=pyhd8ed1ab_0
-  - slack_sdk=3.36.0=hd8ed1ab_0
   - smart_open=7.3.1=pyhcf101f3_0
   - smmap=5.0.2=pyhd8ed1ab_0
   - snakemake=9.11.4=hdfd78af_0
@@ -125,7 +124,6 @@ dependencies:
   - typer=0.19.2=pyhef33e25_0
   - typer-slim=0.19.2=pyhcf101f3_0
   - typer-slim-standard=0.19.2=h6e3bb38_0
-  - typing-extensions=4.15.0=h396c80c_0
   - typing-inspection=0.4.1=pyhd8ed1ab_0
   - typing_extensions=4.15.0=pyhcf101f3_0
   - tzdata=2025b=h78e105d_0
@@ -141,4 +139,6 @@ dependencies:
   - yte=1.8.1=pyha770c72_0
   - zstandard=0.25.0=py311haee01d2_0
   - zstd=1.5.7=hb8e6e7a_2
-prefix: /home/jovyan/snakemake
+  - pip:
+    - ipykernel
+    - jupyterlab
