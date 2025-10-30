@@ -6,6 +6,17 @@ spec:
   containers:
   - name: parabricks-snakemake
     image: docker.io/chabbytmd1/snake-test:v1.2.6
+    command: 
+    - "/bin/bash"
+    - "-c"
+    - |
+      apt-get update -y
+      apt-get install -y curl unzip
+      curl https://rclone.org/install.sh | bash
+      mkdir ~/.config
+      mkdir ~/.config/rclone
+      cp /config/rclone/rclone.conf ~/.config/rclone/
+      sleep infinity
     resources:
       limits:
         memory: 32Gi
@@ -17,7 +28,19 @@ spec:
         cpu: "5"
         # Change the number of GPU required (up to 4)
         nvidia.com/gpu: "1"
-    command: ["sh", "-c", "sleep infinity"]
+    volumeMounts:
+    - name: data
+      mountPath: /data
+    - name: rclone-config
+      mountPath: /config/rclone/
+  restartPolicy: Never
+  volumes:
+  - name: data
+    persistentVolumeClaim:
+      claimName: tmugoya-block
+  - name: rclone-config
+    secret:
+      secretName: rclone-config
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
