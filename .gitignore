@@ -1,3 +1,6 @@
 .snakemake/
 *.png
 jupyter.yaml
+rclone.conf
+data.yaml
+viewer-pod.yaml
